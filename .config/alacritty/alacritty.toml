@@ -1,0 +1,48 @@
+[[colors.indexed_colors]]
+color = "0xff9e64"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xdb4b4b"
+index = 17
+
+[colors.bright]
+black = "0xA6896B"
+red = "0x5F4149"
+green = "0xEB3247"
+yellow = "0xBC4349"
+blue = "0xF35645"
+magenta = "0xF6A73B"
+cyan = "0xFAD32F"
+white = "0xEEC49A"
+
+[colors.normal]
+black = "0x0A1124"
+red = "0x5F4149"
+green = "0xEB3247"
+yellow = "0xBC4349"
+blue = "0xF35645"
+magenta = "0xF6A73B"
+cyan = "0xFAD32F"
+white = "0xEEC49A"
+
+[colors.primary]
+background = "0x0A1124"
+foreground = "0xA6896B"
+
+[font]
+size = 9
+
+[font.normal]
+family = "monospace"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"
+
+[selection]
+save_to_clipboard = false
+
+[window]
+opacity = 0.95

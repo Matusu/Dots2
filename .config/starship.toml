@@ -1,0 +1,22 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+format='''
+[╭──](bold red)in$directory
+[╰──](bold red)$cmd_duration$character
+'''
+
+# Make prompt a single line instead of two lines
+[line_break]
+disabled = true
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[battery]
+disabled = true
+
+[character]
+success_symbol = "🐧💙 [❯](bold red)"
+error_symbol = "ᶠᶸᶜᵏᵧₒᵤ！[❯](bold green)"
