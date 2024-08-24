@@ -48,7 +48,5 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-
-picom --fade-in-step=1 --fade-out-step=1 &
-dunst &
+# --fade-in-step=1 --fade-out-step=1 
 exec xmonad

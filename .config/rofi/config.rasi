@@ -28,11 +28,11 @@ configuration {
 }
 
 window {
-    background-color:   @bg0;
+    background-color:   @bg1;
 
     location:       center;
     width:          640;
-    border:           1;
+    border:           0;
     border-color:    @fg1;
     padding:          0;
 }
@@ -43,14 +43,15 @@ inputbar {
     spacing:    8px;
     children:   [entry];
     border:     0px;
+    background-color:    @bg1;
 }
 
 entry {
     font:   inherit;
 
     placeholder         : "Search";
-    placeholder-color   : @bg1;
-    text-color:		 @bg1;
+    placeholder-color   : @bg0;
+    text-color:		 @bg0;
 }
 
 textbox {
@@ -74,18 +75,18 @@ element {
 }
 
 element normal.normal{
-    text-color: @bg1;
-    background-color: transparent;
+    text-color: @bg0;
+    background-color: @bg1;
 }
 
 element alternate normal {
-    text-color: @bg1;
-    background-color: transparent;
+    text-color: @bg0;
+    background-color: @bg1;
 }
 
 element selected normal, element selected active {
-    background-color:   @bg1;
-    text-color:         @bg0;
+    background-color:   @bg0;
+    text-color:         @bg1;
 }
 
 element-text {

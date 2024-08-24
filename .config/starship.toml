@@ -2,7 +2,7 @@
 add_newline = true
 
 format='''
-[╭──](bold red)in$directory
+[╭──](bold red)[ ](bold red)in $directory$git_branch
 [╰──](bold red)$cmd_duration$character
 '''
 
@@ -18,5 +18,5 @@ disabled = true
 disabled = true
 
 [character]
-success_symbol = "🐧💙 [❯](bold red)"
+success_symbol = "[ ](bold cyan)[❯](bold red)"
 error_symbol = "ᶠᶸᶜᵏᵧₒᵤ！[❯](bold green)"

@@ -13,6 +13,7 @@ alias ls='exa --long --color=auto'
 alias battery='bat /sys/class/power_supply/BAT0/capacity'
 alias paru-r="paru -Rcns"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias wallpaper='bash wallpaper.sh'
 PS1='[\u@\h \W]\$ '
 
 neofetch

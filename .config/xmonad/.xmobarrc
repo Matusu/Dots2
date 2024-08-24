@@ -4,6 +4,7 @@ Config { font            = "JetBrains Mono 13"
                            ]
        , bgColor      = "#0A1124"
        , fgColor      = "#FAD32F"
+       , alpha        = 240
        , position     = TopH 32
        , textOffset   = 1
        , lowerOnStart = True
@@ -12,13 +13,13 @@ Config { font            = "JetBrains Mono 13"
        , persistent   = True
        , commands = [
                     Run Date " %b %d %Y <fc=#5F4149><fn=2>|</fn></fc> %H:%M " "date" 50,
-		    Run Com "bash" ["/home/matusu/.config/xmonad/battery.sh"] "battery" 10,
+		    Run Com "bash" ["/home/matusu/.config/xmonad/scripts/battery.sh"] "battery" 10,
 	            Run Wireless "wlp1s0" [ "-t", "<essid>" ] 10,
                     Run UnsafeStdinReader,
 		    Run Com "echo" ["<fn=1>\xf028</fn>"] "volumeicon" 3600,
 		    Run Com "echo" ["<fn=1>\xf1eb</fn>"] "wifiicon" 3600,
 		    Run Com "echo" ["<fn=1>\xf783</fn>"] "calendaricon" 3600,
-		    Run Com "bash" ["/home/matusu/.config/xmonad/volume.sh"] "volume" 10,
+		    Run Com "bash" ["/home/matusu/.config/xmonad/scripts/volume.sh"] "volume" 10,
 		    Run Com "echo" ["<fc=#5F4149><fn=2>|</fn></fc>"] "sep" 3600
                     ]
        , sepChar = "%"

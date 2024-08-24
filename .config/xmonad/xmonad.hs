@@ -60,7 +60,10 @@ instance SetsAmbiguous FocusedOnly where
 myWorkspaces = [" \xf120  ", " \xf0ac  ", " \xee9c  ", " \xeda9  ", " \xef1e  ", " \xf2dc  ", " \xf0b46  ", " \xf11eb  ", " \xefc8  "]
 
 myStartupHook = do
+           spawnOnce "picom --fade-in-step=1 --fade-out-step=1 &"
            spawnOnce "udiskie &"
+           spawnOnce "dunst &"
+           spawnOnce "bash wallpaper.sh"
 
 myKeys = [("M-<Return>", spawn myTerminal),
           ("M-q", kill),
@@ -73,22 +76,24 @@ myKeys = [("M-<Return>", spawn myTerminal),
           ("M-k", windows $ W.focusUp),
           ("<XF86MonBrightnessUp>", spawn "lux -a 10%"),
           ("<XF86MonBrightnessDown>", spawn "lux -s 10%"),
-          ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute"),
-          ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute"),
-          ("<XF86AudioMute>", spawn "amixer set Master toggle")
+          ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute; bash $HOME/.config/xmonad/scripts/volume_not.sh"),
+          ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute; bash $HOME/.config/xmonad/scripts/volume_not.sh"),
+          ("<XF86AudioMute>", spawn "amixer set Master toggle"),
+          ("M-S-l", spawn "bash $HOME/.config/xmonad/scripts/i3lock.sh"),
+          ("M-w", spawn "bash wallpaper.sh")
 	  ]
 
 myManageHooks = composeAll 
         [manageDocks,
-	 className =? "firefox" --> doShift (myWorkspaces !! 1),
-	 isFullscreen --> doFullFloat,
-	 manageHook def]
+        className =? "firefox" --> doShift (myWorkspaces !! 1),
+        isFullscreen --> doFullFloat,
+        manageHook def]
 
 myFadeHook = composeAll [opaque,
                          isUnfocused --> transparency 0.2
                         ]
 
-myLayout = mkToggle (NBFULL ?? NOBORDERS ?? EOT) (spacingRaw False (Border 8 8 8 8) True (Border 8 8 8 8) True $ smartBorders $ lessBorders (FocusedOnly) $ ResizableTall 1 (3/100) (1/2) [] ||| Accordion)
+myLayout = mkToggle (NBFULL ?? NOBORDERS ?? EOT) (spacingRaw False (Border 6 6 6 6) True (Border 6 6 6 6) True $ smartBorders $ lessBorders (FocusedOnly) $ ResizableTall 1 (3/100) (1/2) [] ||| Accordion)
 
 
 main = do
