@@ -14,11 +14,11 @@ configuration {
 * {
     font:   "Font Awesome 12";
 
-    bg0:    #0A1124;
-    bg1:    #A6896B;
+    bg1:    #0A1124;
+    bg0:    #FAD32F;
 
-    fg0:    #f35645;
-    fg1:    #5f4149;
+    fg0:    #bc4349;
+    fg1:    #eb3247;
 
     text-color:         @fg0;
 
@@ -41,9 +41,15 @@ inputbar {
     font:       "Font Awesome 12";
     padding:    8px;
     spacing:    8px;
-    children:   [entry];
+    children:   [icon-search, entry];
     border:     0px;
     background-color:    @bg1;
+}
+
+icon-search{
+    expand:     false;
+    filename:   "interface.png";
+    size: 28px;
 }
 
 entry {
@@ -70,22 +76,22 @@ listview {
 }
 
 element {
-    padding:            8px 8px;
+    padding:            8px 45px;
     background-color:   @bg0;
 }
 
 element normal.normal{
-    text-color: @bg0;
+    text-color: @fg0;
     background-color: @bg1;
 }
 
 element alternate normal {
-    text-color: @bg0;
+    text-color: @fg0;
     background-color: @bg1;
 }
 
 element selected normal, element selected active {
-    background-color:   @bg0;
+    background-color:   @fg1;
     text-color:         @bg1;
 }
 

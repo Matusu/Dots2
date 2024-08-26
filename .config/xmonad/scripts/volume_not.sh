@@ -7,17 +7,17 @@ function send_notification(){
 }
 
 if [ "$mute" = "off" ]; then
-   send_notification $HOME/.config/xmonad/resources/volume\(1\).png
+   dunstify -a "Changevolume" -u low -r 8801 -h int:value:"0" -i $HOME/.config/xmonad/resources/mute_16105278.png "volume: 0%" -t 1000
 else
     # Display different emojis based on the volume level
     if [ "$volume" -eq 0 ]; then
-      send_notification $HOME/.config/xmonad/resources/volume\(1\).png
+      send_notification $HOME/.config/xmonad/resources/mute_16105278.png
     elif [ "$volume" -le 30 ]; then
-      send_notification $HOME/.config/xmonad/resources/volume.png
+      send_notification $HOME/.config/xmonad/resources/speaker_16105245.png
     elif [ "$volume" -le 70 ]; then
-      send_notification $HOME/.config/xmonad/resources/low-volume.png
+      send_notification $HOME/.config/xmonad/resources/low-volume_16105245.png
     else
-      send_notification $HOME/.config/xmonad/resources/volume-up.png
+      send_notification $HOME/.config/xmonad/resources/high-volume_16105043.png
     fi
 fi
 

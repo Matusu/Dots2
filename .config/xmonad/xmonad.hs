@@ -7,12 +7,14 @@ import System.IO (hClose, hPutStr, hPutStrLn)
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
 import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), (??))
 import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
+import XMonad.Layout.SimpleDecoration
 import XMonad.Layout.Accordion
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.ToggleLayouts (ToggleLayout(..), toggleLayouts)
 import XMonad.Layout.Spacing
 import XMonad.Layout.Gaps
 import XMonad.Layout.NoBorders
+import XMonad.Layout.PerWorkspace
 import XMonad.Hooks.FadeWindows
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.ManageDocks
@@ -70,30 +72,39 @@ myKeys = [("M-<Return>", spawn myTerminal),
           ("M-S-r", spawn "xmonad --recompile; xmonad --restart"),
           ("M-r", spawn "rofi -show run"),
           ("M-e", spawn "rofi -show emoji"),
-          ("M-f", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts),
+          ("M-f", sendMessage (MT.Toggle NBFULL)),
           ("M-g", toggleScreenSpacingEnabled >> toggleWindowSpacingEnabled),
           ("M-j", windows $ W.focusDown),
           ("M-k", windows $ W.focusUp),
-          ("<XF86MonBrightnessUp>", spawn "lux -a 10%"),
-          ("<XF86MonBrightnessDown>", spawn "lux -s 10%"),
+          ("<XF86MonBrightnessUp>", spawn "lux -a 10%; bash $HOME/.config/xmonad/scripts/brightness_not.sh"),
+          ("<XF86MonBrightnessDown>", spawn "lux -s 10%; bash $HOME/.config/xmonad/scripts/brightness_not.sh"),
           ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute; bash $HOME/.config/xmonad/scripts/volume_not.sh"),
           ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute; bash $HOME/.config/xmonad/scripts/volume_not.sh"),
-          ("<XF86AudioMute>", spawn "amixer set Master toggle"),
+          ("<XF86AudioMute>", spawn "amixer set Master toggle; bash $HOME/.config/xmonad/scripts/volume_not.sh"),
           ("M-S-l", spawn "bash $HOME/.config/xmonad/scripts/i3lock.sh"),
-          ("M-w", spawn "bash wallpaper.sh")
+          ("M-w", spawn "bash wallpaper.sh"),
+          ("M-S-k", spawn "setxkbmap -query | grep -q 'cz' && setxkbmap us || setxkbmap cz,us")
+          -- ("M-S-b", spawn "dbus-send --session --dest=org.Xmobar.Control --type=method_call --print-reply '/org/Xmobar/Control' org.Xmobar.Control.SendSignal \"string:Toggle -1\"" >> (sendMessage $ ToggleStruts) >> refresh)
 	  ]
 
 myManageHooks = composeAll 
         [manageDocks,
         className =? "firefox" --> doShift (myWorkspaces !! 1),
+        className =? "firefox" --> hasBorder False,
+        className =? "usb" --> doShift(myWorkspaces !! 3),
         isFullscreen --> doFullFloat,
         manageHook def]
 
 myFadeHook = composeAll [opaque,
-                         isUnfocused --> transparency 0.2
+                         isUnfocused <&&> className =? "firefox" --> opacity 0.85
                         ]
 
-myLayout = mkToggle (NBFULL ?? NOBORDERS ?? EOT) (spacingRaw False (Border 6 6 6 6) True (Border 6 6 6 6) True $ smartBorders $ lessBorders (FocusedOnly) $ ResizableTall 1 (3/100) (1/2) [] ||| Accordion)
+fullscrean = NBFULL ?? NOBORDERS ?? EOT
+tileWithGaps = spacingRaw False (Border 6 6 6 6) True (Border 6 6 6 6) True $ smartBorders $ lessBorders (FocusedOnly) $ ResizableTall 1 (3/100) (1/2) []
+tileNoGaps = smartBorders $ ResizableTall 1 (3/100) (1/2) []
+accordionNoBorder = noBorders $ Accordion
+myLayout = onWorkspace " \xf0ac  " tileNoGaps $ 
+           mkToggle (fullscrean) (tileWithGaps ||| accordionNoBorder)
 
 
 main = do
@@ -122,5 +133,5 @@ main = do
          ppUrgent = xmobarColor "#C45500" "",
          ppExtras = [],
          ppOrder = \(ws:_) -> [ws]
-         }
+         } >> fadeWindowsLogHook myFadeHook
     } `additionalKeysP` myKeys

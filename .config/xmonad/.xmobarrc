@@ -1,6 +1,6 @@
 Config { font            = "JetBrains Mono 13"
        , additionalFonts = [ "xft:Font Awesome 6:pixelsize=14",
-       			     "JetBrains Mono Bold 16" 
+       			              "JetBrains Mono Bold 16"
                            ]
        , bgColor      = "#0A1124"
        , fgColor      = "#FAD32F"
@@ -20,10 +20,13 @@ Config { font            = "JetBrains Mono 13"
 		    Run Com "echo" ["<fn=1>\xf1eb</fn>"] "wifiicon" 3600,
 		    Run Com "echo" ["<fn=1>\xf783</fn>"] "calendaricon" 3600,
 		    Run Com "bash" ["/home/matusu/.config/xmonad/scripts/volume.sh"] "volume" 10,
-		    Run Com "echo" ["<fc=#5F4149><fn=2>|</fn></fc>"] "sep" 3600
+		    Run Com "echo" ["<fc=#5F4149><fn=2>|</fn></fc>"] "sep" 3600,
+          Run Com "bash" ["/home/matusu/.config/xmonad/scripts/key_layout.sh"] "key_layout" 10,
+          Run Com "echo" ["<fn=1>\xf11c</fn>"] "keyboard" 3600
+
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %UnsafeStdinReader% }{%volume% %sep% %wifiicon% : %wlp1s0wi% %sep% %battery% %sep% %calendaricon%:%date%"
+       , template = " %UnsafeStdinReader% }{%keyboard% : %key_layout% %sep% %volume% %sep% %wifiicon% : %wlp1s0wi% %sep% %battery% %sep% %calendaricon%:%date%"
        }
 

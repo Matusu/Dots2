@@ -1,0 +1,12 @@
+# GIMP action-history
+
+(history-item "file-open" 1)
+(history-item "file-save" 1)
+(history-item "image-new" 0)
+(history-item "view-zoom-revert" 0)
+(history-item "edit-cut" 0)
+(history-item "image-duplicate" 0)
+(history-item "file-save-as" 0)
+(history-item "file-export-as" 1)
+
+# end of action-history

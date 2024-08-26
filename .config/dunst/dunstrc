@@ -1,24 +1,6 @@
 # See dunst(5) for all configuration options
 
 [global]
-    ### Display ###
-
-    # Which monitor should the notifications be displayed on.
-    monitor = 0
-
-    # Display notification on focused monitor.  Possible modes are:
-    #   mouse: follow mouse pointer
-    #   keyboard: follow window with keyboard focus
-    #   none: don't follow anything
-    #
-    # "keyboard" needs a window manager that exports the
-    # _NET_ACTIVE_WINDOW property.
-    # This should be the case for almost all modern window managers.
-    #
-    # If this option is set to mouse or keyboard, the monitor option
-    # will be ignored.
-    follow = none
-
     ### Geometry ###
 
     # dynamic width from 0 to 300
@@ -33,7 +15,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x50
+    offset = 20x50
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -67,14 +49,7 @@
     # is set to 0 this option will be ignored.
     progress_bar_corners = all
 
-    highlight = "#0A1124"
-
-    # Corner radius for the icon image.
-    icon_corner_radius = 0
-
-    # Define which corners to round when drawing the icon image. If icon_corner_radius
-    # is set to 0 this option will be ignored.
-    icon_corners = all
+    highlight = "#FAD32F"
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
@@ -105,13 +80,13 @@
     frame_width = 0
 
     # Defines color of the frame around the notification window.
-    frame_color = "#FAD32F"
+    frame_color = "#EB3247"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
     # Click events on gaps do not currently propagate to applications below.
-    gap_size = 2
+    gap_size = 4
 
     # Define a color for the separator.
     # possible values are:
@@ -335,8 +310,8 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#A6896B"
-    foreground = "#0A1124"
+    background = "#0A1124"
+    foreground = "#fad32f"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon

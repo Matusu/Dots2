@@ -1,4 +1,5 @@
 program_options:
   automount: true
   notify: false
-  event_hook: "dunstify {event} {device_presentation} -u low -r 9832"
+  # event_hook: "dunstify -u low -r 8801 -i /home/matusu/.config/udiskie/usb.png {event} {device_presentation} -t 2000"
+  event_hook: "bash /home/matusu/.config/udiskie/scripts.sh {event}"
