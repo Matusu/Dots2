@@ -4,3 +4,4 @@ d46ca0ee22c159f13519ca80843af71241b3dc46 34e44ec9318f1d89f429932c3cb3260f7f94da6
 78fc0cbdc01c85a7624ab355ce57b6f9be85a5f6 1035402850c5c092d9cb5e8f9ddb9a6bcf3a06ac Matusu <volakmatous@gmail.com> 1724339776 +0200	commit: Add xinitrc
 1035402850c5c092d9cb5e8f9ddb9a6bcf3a06ac a7e5e853b17517ebe24c7d94d7f8a5b79b863cc5 Matusu <volakmatous@gmail.com> 1724521015 +0200	commit: added notification, wallpapers
 a7e5e853b17517ebe24c7d94d7f8a5b79b863cc5 1ff302ef8863ad0aaa8a831e906aa088fa22333c Matusu <volakmatous@gmail.com> 1724676806 +0200	commit: rofi update, udiskie config, xmonad rice
+1ff302ef8863ad0aaa8a831e906aa088fa22333c 4176131c6275e72b5a0090d52302fd9f389fd153 Matusu <volakmatous@gmail.com> 1725723277 +0200	commit: xmonad,udiskie,nvim small things
